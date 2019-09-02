@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 
 namespace Answer
 {
@@ -7,7 +7,18 @@ namespace Answer
     {
         public uint reverseBits(uint n)
         {
-            throw new NotImplementedException();
+            uint result = 0;
+
+            foreach (int i in Enumerable.Range(0, 32))
+            {
+                var bit = (uint)1 << i;
+                if ((n & bit) == bit)
+                {
+                    result |= ((uint)1 << 31) >> i;
+                }
+            }
+
+            return result;
         }
     }
 }
